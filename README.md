@@ -15,8 +15,17 @@ Built end-to-end customer churn prediction pipeline using Telco dataset — perf
 
 
 
+Telco Customer Churn Dataset from Kaggle 
+https://www.kaggle.com/blastchar/telco-customer-churn 
 
 
+
+Problem Statement 
+Dataset Description 
+Approach 
+Results (With metrics table & visualizations) 
+Business Insights 
+Instructions to Reproduce 
 
 
 
