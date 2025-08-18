@@ -15,21 +15,21 @@ from feature_engineering import clean_column_names, handle_missing_values, featu
 
 
 # Creating a preprocessing pipeline for categorical and numeric columns 
-def create_preprocessing_pipeline(data: pd.DataFrame, target_column: str = 'churn'): 
+def create_preprocessing_pipeline(data: pd.DataFrame, target_column: str = 'Churn'): 
     # Functions from feature_engineering 
     data = clean_column_names(data) 
     data = handle_missing_values(data) 
     data = feature_engineering(data) 
     # Dropping customerid column 
-    data.drop(columns=['customerid'], inplace=True, errors='ignore') 
+    data.drop(columns=['customerID'], inplace=True, errors='ignore') 
     # Separate mapping for target column (churn) 
     data[target_column] = data[target_column].map({'Yes':1, 'No':0}) 
 
     # Column lists 
-    numeric_features = ['tenure','monthlycharges','totalcharges','avg_charges_per_month','internet_services_count']
-    ohe_features = ['contract','internetservice','paymentmethod','tenure_group'] 
-    binary_features = ['gender','partenr','dependents','phoneservice','paperlessbilling','multiplelines','seniorcitizen',
-                       'onlinesecurity','onlinebackup','deviceprotection','techsupport','streamingtv','streamingmovies']
+    numeric_features = ['tenure','MonthlyCharges','TotalCharges','avg_charges_per_month','internet_services_count']
+    ohe_features = ['Contract','InternetService','PaymentMethod','tenure_group'] 
+    binary_features = ['gender','Partenr','Dependents','PhoneService','PaperlessBilling','MultipleLines','SeniorCitizen',
+                       'OnlineSecurity','OnlineBackup','DeviceProtection','TechSupport','StreamingTV','StreamingMovies']
     
     binary_mapping = {'Yes':1, 'No':0, 'No phone service':0, 'No internet service':0, 'Male':0, 'Female':1}
     for c in binary_features: 
@@ -40,7 +40,7 @@ def create_preprocessing_pipeline(data: pd.DataFrame, target_column: str = 'chur
     numeric_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='median')), 
         ('ohe', StandardScaler()) 
-    ])
+    ])   
     categorical_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='most_frequent')), 
         ('ohe', OneHotEncoder(handle_unknown='ignore', sparse_output=False)) 

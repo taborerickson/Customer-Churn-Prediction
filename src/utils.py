@@ -24,7 +24,7 @@ def save_data(data: pd.DataFrame, file_name: str):
     print(f"Saved -> {file_path}") 
 
 # Helper function to calculate cross-tabulations and group churn rates 
-def group_churn(data, group_column, target='churn'): 
+def group_churn(data, group_column, target='Churn'): 
     # In-group churn 
     cross_tab = pd.crosstab(data[group_column], data[target], normalize='index') 
     cross_tab = cross_tab.rename(columns={'No': 'churn_no_pct', 'Yes': 'churn_yes_pct'}) 
