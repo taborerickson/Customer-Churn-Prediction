@@ -1,10 +1,14 @@
 
-# Telco Customer Churn Prediction 
-End-to-end project for analyzing customer churn data and predicting customers likely to leave in order to produce targeted, optimized, and actionable customer retention strategies. 
+<center> 
 
-Data source: Telco Customer Churn Dataset from Kaggle 
+# Telco Customer Churn (Prediction & Analysis)
+
+<br></br> 
+
+**Data source: Telco Customer Churn Dataset from Kaggle** 
 https://www.kaggle.com/blastchar/telco-customer-churn 
 
+</center> 
 
 **Goals:** <br> 
 1. Analyze Telco customer churn dataset and produce actionable customer retention insights. 
@@ -18,27 +22,18 @@ https://www.kaggle.com/blastchar/telco-customer-churn
 4. Model explainability with SHAP for top features. 
 <br></br>
 
+
 **Results:** <br> 
 - Best Model: Tuned RandomForest 
     - Selected via RandomizedSearchCV: 
-        - CV Best ~0.842 (roc_auc) 
-    - Final Test: ROC AUC -> 0.839, PR AUC -> 0.639 
-    - Probability Threshold ~0.6036 (approximated by max f1) 
-- Classfication at threshold 0.6036 (test_set -> n=1,409): 
-    - True negatives (class 0 support = 1,035) 
-    - True positives (class 1 support = 374) 
-    - Positve-class recall (sensitivity) ~0.72 -> ~269 of 374 churns correctly flagged 
-    - False positives ~211 (customers flagged but would not have churned) 
-    - False negatives ~105 (actual churn missed by the model) 
+        - CV Best ~0.8421 (roc_auc) 
+    - Final Test: ROC AUC -> 0.8404, PR AUC -> 0.6401 
+    - Probability Threshold ~0.5784 (approximated by max f1) 
+- Classfication at threshold 0.5784 (test_set -> n=1,409) 
 - Baselines: 
-    - LogisticRegression: ROC AUC -> 0.835, PR AUC -> 0.629 
-    - RandomForest: ROC AUC -> 0.803, PR AUC -> 0.576
+    - LogisticRegression: ROC AUC -> 0.0.8368, PR AUC -> 0.0.6369 
+    - RandomForest: ROC AUC -> 0.0.8061, PR AUC -> 0.0.5784
 
-<br></br> 
-
-
-**Top Features:**<br>
-1. 
 <br></br> 
 
 **Top Actionable Recommendations:** 
@@ -60,40 +55,23 @@ https://www.kaggle.com/blastchar/telco-customer-churn
     - Premium discounts or hardware replacements for strategic customers. 
 
 
-Files in Repo: 
-- Data/     (Contains both raw data file and cleaned data) 
-- Models/   (Contains model pipelines) 
-- Notebooks/    (Contains notebooks with documentation) 
-- Visuals/      (Contains .png figures of EDA visualizations and model performance metrics) 
-- Demo_Prediction.ipynb     (Notebook to run a demo prediction on customer churn)  
-- README.md         
-- requirements.txt  (.txt file listing the project dependencies to install) 
+**Resume Bullet**<br>
+Built end-to-end customer churn prediction pipeline using Telco dataset -- performed feature engineering, handled class imbalance (SMOTE & class weights), tuned XGBoost model (ROC AUC 0.86), and produced SHAP explainability with actionable retention recommendations.
 
-**Note**<br> 
-Notebooks *customer_churn_EDA.ipynb* and *customer_churn_ml.ipynb* are still in progress. These notebooks won't provide any additional information, but rather are intended to separate out the Exploratory Data Analysis (EDA) and model pipeline development. 
+Designed and implemented a reproducible end-to-end machine learning pipeline including feature engineering, preprocessing pipelines, class-imbalance handling, baseline and tuned models, and model explainability using SHAP
+
+Telco Customer Churn Predictions 
+- Engineered an end-to-end prediction pipeline (data ingestion, data cleaning, feature engineering, preprocessing pipelines, class-imbalance handling, model selection/tuning) using Python, pandas, scikit-learn and imbalanced-learn. 
+- Packaged tuned Random Forest model (ROC AUC 0.84 and PR AUC 0.64) with reproducible pipeline and model explainability. 
+- Produced actionable insights and operationalized pipeline enabling targeted retention recommendations for high-risk churn candidates. 
 
 
+- Engineered a robust end-to-end machine learning prediction pipeline, producing a packaged reproducible and operationalized pipeline and model explainability. 
+- 
+- Developed an end-to-end machine learning prediction pipeline achieving ROC AUC 0.84, producing an interpretable SHAP insights and reproducible and operationalized pipeline. 
+- Implemented feature engineering methods, model tuning, class imbalance handling
 
-
-Limitations and Next Steps: 
-
-Multicollinearity (internet-service + internet-features) 
-Correlation vs Causation 
-Permutation Importance 
-Logistic Coefficient Stability checks 
-
-Implement experimentation models to target customers where interventions truly reduce customer churn
-
-Interaction Features 
-Chi-Square 
-
-Implement sentiment analysis model for analyzing negative customer billing reviews to investigate billing experience for customers paying with electronic check. 
-
-A/B testing on different Bundled Internet Support packages for customers. 
-
-
-
-**Resume Bullet**<br> 
-Built end-to-end customer churn prediction pipeline using Telco dataset — performed feature engineering, handled class imbalance (SMOTE & class weights), tuned XGBoost model (ROC AUC 0.86), and produced SHAP explainability with actionable retention recommendations.
-
-
+- Developed and implemented an end-to-end machine learning pipeline using modular code methods including feature engineering, preprocessing pipelines, and class-imbalance handling achieving ROC AUC 0.84 and PR AUC 0.64 on a held-out test set.
+- Packaged reproducible and operationalized pipeline and model explainabilty 
+a reproducible packaged end-to-end machine learning pipeline including feature engineering, preprocessing pipelines, and class-imbalance handling
+- Packaged 
