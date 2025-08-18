@@ -11,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier 
 from imblearn.pipeline import Pipeline as ImbPipeline  
 from imblearn.over_sampling import SMOTE 
-from feature_engineering import clean_column_names, handle_missing_values, feature_engineering 
+from feature_engineering import feature_engineering 
 
 
 # Creating a preprocessing pipeline for categorical and numeric columns 
