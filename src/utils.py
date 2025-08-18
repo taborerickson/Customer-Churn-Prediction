@@ -1,10 +1,29 @@
-# utils.py 
+# src/utils.py 
 # Utility functions 
 
+from pathlib import Path 
+import os 
 import pandas as pd 
+
+# Defining project paths 
+base_path = Path(__file__).resolve.parents[1] 
+data_path = base_path / "Data" 
+model_path = base_path / "Models" 
+visuals_path = base_path / "Visuals" 
+
+# Making sure folders exists 
+for path in [data_path, model_path, visuals_path]: 
+    path.mkdir(parents=True, exist_ok=True) 
+
+# Function to save data files to Data/ folder 
+def save_data(data: pd.DataFrame, file_name: str): 
+    file_path = os.path.join(data_path, f"{file_name}.csv") 
+    data.to_csv(file_path, index=False) 
+    print(f"Saved -> {file_path}") 
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 import numpy as np 
-
-
 # Helper function to calculate cross-tabulations and group churn rates 
 def group_churn(data, group_column, target='Churn'): 
     # In-group churn 
