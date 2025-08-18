@@ -17,8 +17,6 @@ from feature_engineering import feature_engineering
 # Creating a preprocessing pipeline for categorical and numeric columns 
 def create_preprocessing_pipeline(data: pd.DataFrame, target_column: str = 'Churn'): 
     # Functions from feature_engineering 
-    data = clean_column_names(data) 
-    data = handle_missing_values(data) 
     data = feature_engineering(data) 
     # Dropping customerid column 
     data.drop(columns=['customerID'], inplace=True, errors='ignore') 
