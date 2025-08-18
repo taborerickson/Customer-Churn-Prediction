@@ -8,7 +8,7 @@ import os
 import pandas as pd 
 
 # Defining project paths 
-base_path = Path(__file__).resolve.parent[1] 
+base_path = Path(__file__).resolve().parents[1] 
 data_path = base_path / "Data" 
 model_path = base_path / "Models" 
 visuals_path = base_path / "Visuals" 
