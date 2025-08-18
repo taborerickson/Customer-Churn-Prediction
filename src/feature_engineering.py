@@ -17,7 +17,7 @@ def handle_missing_values(data: pd.DataFrame) -> pd.DataFrame:
         if data['totalcharges'].dtype == 'object': 
             data['totalcharges'] = pd.to_numeric(data['totalcharges'], errors='coerce') 
             # Changing totalcharges to 0 if tenure==0 (Assumed to be a new customer) 
-            data.loc[(data['tenure']==0) & (data['totalcharges'].isna()), 'totalcharges'] == 0.0 
+        data.loc[(data['tenure']==0) & (data['totalcharges'].isna()), 'totalcharges'] == 0.0 
     return data 
 
 
