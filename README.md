@@ -3,27 +3,32 @@
 
 # Telco Customer Churn (Prediction & Analysis)
 
-<br></br> 
+<br> 
 
-**Data source: Telco Customer Churn Dataset from Kaggle** 
-https://www.kaggle.com/blastchar/telco-customer-churn 
+## End-to-end churn prediction pipeline --> data cleaning, exploratory data analysis (EDA), feature engineering, processing pipelines, baseline & tuned models, SHAP explainability, and saved inference pipeline. <br> 
+### **Final Model:** Tuned Random Forest (ROC AUC 0.84, PR ACUR 0.64) 
+### Visualizations and notebooks included.
+
+**Data source:** https://www.kaggle.com/blastchar/telco-customer-churn <br>
+*(Telco Customer Churn Dataset from Kaggle)*
+
 
 </center> 
 
-**Goals:** <br> 
+### **Goals:** <br> 
 1. Analyze Telco customer churn dataset and produce actionable customer retention insights. 
 2. Predict customers that are likely to leave the company in order to gain insights into targeted and optimized retention strategies. 
-<br></br> 
+<br> 
 
-**Approach:** <br> 
+### **Approach:** <br> 
 1. Exploratory Data Analysis (EDA) to uncover drivers of customer churn. 
 2. Feature engineering (AvgChargesPerMonth, num_internet_services, flags for fiber optic/electronic check/month-to-month). 
 3. Pipelines with preprocessing and modeling (Logistic Regression baseline, Random Forest with SMOTE, RandomizedSearchCV tuning).  
 4. Model explainability with SHAP for top features. 
-<br></br>
+<br>
 
 
-**Results:** <br> 
+### **Results:** <br> 
 - Best Model: Tuned RandomForest 
     - Selected via RandomizedSearchCV: 
         - CV Best ~0.8421 (roc_auc) 
@@ -34,16 +39,22 @@ https://www.kaggle.com/blastchar/telco-customer-churn
     - LogisticRegression: ROC AUC -> 0.0.8368, PR AUC -> 0.0.6369 
     - RandomForest: ROC AUC -> 0.0.8061, PR AUC -> 0.0.5784
 
-<br></br> 
+<br>
 
 **Top Actionable Recommendations:** 
-- (Month-to-Month Customers): Consider short-term discounts to allow contract conversion with upfront incentives (Example: first 3 months 15% off for one-year plans). 
-- (Fiber Optic Internet): Investigate service quality such as speed, outages, and customer expectations. Consider a targeted bundled offer including internet service and free/discounted tech support. 
-- (Electronic Check Customers): Investigate negative customer billing reviews to identify drivers for the in-group electronic check customer churn. Explore billing process improvements or incentives for alternate payment methods. 
-- (New High Monthly Charges Customers [low tenure]): Implement a new customer onboarding program, or new customer assistance/short-term discounts to promote customer satisfaction in new customers 
-- (Customers Without Internet Support Services): Explore up-selling opportunity and retention strategies through offering bundled internet support packages (Tech Support/Online Security/Online Backup/Device Protection) (Streaming TV/Streaming Movies).  
+- (Month-to-Month Customers): Consider short-term discounts to allow contract conversion with upfront incentives (Example: first 3 months 15% off for one-year plans). <br>
+![Alt text](Visuals/churn_by_contract.png) <br> 
+- (Fiber Optic Internet): Investigate service quality such as speed, outages, and customer expectations. Consider a targeted bundled offer including internet service and free/discounted tech support. <br>
+![Alt text](Visuals/churn_by_internet_service.png) <br> 
+- (Electronic Check Customers): Investigate negative customer billing reviews to identify drivers for the in-group electronic check customer churn. Explore billing process improvements or incentives for alternate payment methods. <br> 
+![Alt text](Visuals/churn_by_payment_method.png) <br> 
+- (New High Monthly Charges Customers [low tenure]): Implement a new customer onboarding program, or new customer assistance/short-term discounts to promote customer satisfaction in new customers <br> 
+![Alt text](Visuals/histplot_kde_MonthlyCharges_by_churn.png) <br>
+![Alt text](Visuals/histplot_kde_tenure_by_churn.png) <br>   
+- (Customers Without Internet Support Services): Explore up-selling opportunity and retention strategies through offering bundled internet support packages (Tech Support/Online Security/Online Backup/Device Protection) (Streaming TV/Streaming Movies).  <br>
+![Alt text](Visuals/target_encoded_corr_matrix_target_grouping.png) <br>
 
-**Recommended Actions (low -> high cost)**
+**Recommended Actions (Ordered low -> high cost)**
 - Low-Cost / Automated: 
     - Email + SMS: Send targeted marketing messages highlighting limited-time discounts or service benefits. 
     - In-Product Marketing: Add advertisements for short-term discounts or free-trial-periods for additional service add-ons. 
@@ -54,24 +65,15 @@ https://www.kaggle.com/blastchar/telco-customer-churn
 - High-Cost: 
     - Premium discounts or hardware replacements for strategic customers. 
 
+<br>
 
-**Resume Bullet**<br>
-Built end-to-end customer churn prediction pipeline using Telco dataset -- performed feature engineering, handled class imbalance (SMOTE & class weights), tuned XGBoost model (ROC AUC 0.86), and produced SHAP explainability with actionable retention recommendations.
+### **Important Project Files** <br> 
+- **customer_churn_eda.ipynb** --> Notebook with exploratory data analysis (EDA).  
+- **customer_churn_pred.ipynb** --> Notebook with feature engineering, preprocessing pipeline, baseline model training, model tuning, and final evaluation. 
+- **customer_churn_end_to_end.ipynb** --> Notebook combining both above into one end-to-end project notebook. 
+- **Demo_Prediction.ipynb** --> Demo notebook used to run the saved pipeline on example data to test predictions. 
+- **churn_pipeline_best.joblib** --> Saved pipeline of the final model (Used in the Demo for predictions). 
+- **src/feature_engineering.py** --> Contains helper function for feature engineering. Separated to ensure training and inference uses identical transformations. 
+- **Visuals/** --> All visuals are saved to this folder (EDA and model evaluation). 
 
-Designed and implemented a reproducible end-to-end machine learning pipeline including feature engineering, preprocessing pipelines, class-imbalance handling, baseline and tuned models, and model explainability using SHAP
 
-Telco Customer Churn Predictions 
-- Engineered an end-to-end prediction pipeline (data ingestion, data cleaning, feature engineering, preprocessing pipelines, class-imbalance handling, model selection/tuning) using Python, pandas, scikit-learn and imbalanced-learn. 
-- Packaged tuned Random Forest model (ROC AUC 0.84 and PR AUC 0.64) with reproducible pipeline and model explainability. 
-- Produced actionable insights and operationalized pipeline enabling targeted retention recommendations for high-risk churn candidates. 
-
-
-- Engineered a robust end-to-end machine learning prediction pipeline, producing a packaged reproducible and operationalized pipeline and model explainability. 
-- 
-- Developed an end-to-end machine learning prediction pipeline achieving ROC AUC 0.84, producing an interpretable SHAP insights and reproducible and operationalized pipeline. 
-- Implemented feature engineering methods, model tuning, class imbalance handling
-
-- Developed and implemented an end-to-end machine learning pipeline using modular code methods including feature engineering, preprocessing pipelines, and class-imbalance handling achieving ROC AUC 0.84 and PR AUC 0.64 on a held-out test set.
-- Packaged reproducible and operationalized pipeline and model explainabilty 
-a reproducible packaged end-to-end machine learning pipeline including feature engineering, preprocessing pipelines, and class-imbalance handling
-- Packaged 
